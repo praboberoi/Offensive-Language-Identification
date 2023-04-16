@@ -39,7 +39,7 @@ def load_data(file_path):
     return data
 
 def train_fast_text_model(data):
-    return FastText(sentences=data['text'].apply(lambda x: x.split()), vector_size=100, window=5, min_count=5, epochs=10)
+    return FastText(sentences=data['text'].apply(lambda x: x.split()), vector_size=100, window=5, min_count=1, epochs=10)
 
 def create_embedding(text, fasttext_model):
     embedding = [fasttext_model.wv[word] for word in text.split() if word in fasttext_model.wv]
